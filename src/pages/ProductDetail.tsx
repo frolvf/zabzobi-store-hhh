@@ -1,19 +1,46 @@
 import { useParams, Link } from "react-router-dom";
 import { ArrowLeft, Star, ShoppingCart, Check, Zap, Shield, Package } from "lucide-react";
 import { motion } from "framer-motion";
-import { games } from "@/data/games";
+import { games as mockGames } from "@/data/games";
+import { useGame, useGames } from "@/hooks/useGames";
 import { useCart } from "@/contexts/CartContext";
 import GameCard from "@/components/GameCard";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import type { Game } from "@/data/games";
 
 const ProductDetail = () => {
   const { id } = useParams();
-  const game = games.find((g) => g.id === id);
+  const { data: dbGame, isLoading } = useGame(id || "");
+  const { data: dbGames } = useGames();
   const { addToCart, items } = useCart();
-  const inCart = game ? items.some((i) => i.game.id === game.id) : false;
 
-  if (!game) {
+  // Fallback to mock data
+  const mockGame = mockGames.find((g) => g.id === id);
+  const isDB = !!dbGame;
+
+  const title = isDB ? dbGame.title : mockGame?.title;
+  const platform = isDB ? dbGame.platform : mockGame?.platform;
+  const price = isDB ? Number(dbGame.price) : mockGame?.price;
+  const originalPrice = isDB ? (dbGame.original_price ? Number(dbGame.original_price) : undefined) : mockGame?.originalPrice;
+  const image = isDB ? (dbGame.image_url || "/placeholder.svg") : mockGame?.image;
+  const description = isDB ? dbGame.description : mockGame?.description;
+  const deliveryType = isDB ? dbGame.delivery_type : mockGame?.deliveryType;
+  const instructions = isDB ? dbGame.instructions : mockGame?.instructions;
+  const inStock = isDB ? dbGame.in_stock : mockGame?.inStock;
+  const rating = isDB ? Number(dbGame.rating || 0) : (mockGame?.rating || 0);
+  const reviews = isDB ? Number(dbGame.reviews_count || 0) : (mockGame?.reviews || 0);
+  const category = isDB ? (dbGame.categories?.name || "") : (mockGame?.category || "");
+
+  const gameFound = isDB || !!mockGame;
+  const inCart = id ? items.some((i) => i.game.id === id) : false;
+  const discount = originalPrice && price ? Math.round(((originalPrice - price) / originalPrice) * 100) : 0;
+
+  if (isLoading) {
+    return <div className="min-h-screen bg-background"><Navbar /><main className="pt-24 container mx-auto px-4 text-center text-muted-foreground">Chargement...</main></div>;
+  }
+
+  if (!gameFound) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
         <div className="text-center">
@@ -24,15 +51,20 @@ const ProductDetail = () => {
     );
   }
 
-  const related = games.filter((g) => g.platform === game.platform && g.id !== game.id).slice(0, 4);
-  const discount = game.originalPrice
-    ? Math.round(((game.originalPrice - game.price) / game.originalPrice) * 100)
-    : 0;
+  const allGames = dbGames?.length ? dbGames : mockGames;
+  const related = allGames.filter((g: any) => g.platform === platform && g.id !== id).slice(0, 4);
 
-  const deliveryLabels: Record<string, string> = {
-    account: "Compte complet",
-    key: "Clé d'activation",
-    instant: "Livraison instantanée",
+  const deliveryLabels: Record<string, string> = { account: "Compte complet", key: "Clé d'activation", instant: "Livraison instantanée" };
+
+  const handleAdd = () => {
+    if (inCart || !id) return;
+    const normalized: Game = {
+      id: id!, title: title!, platform: platform as any, category: category as any,
+      price: price!, originalPrice, currency: "MAD", image: image!, description: description || "",
+      deliveryType: deliveryType as any, instructions: instructions || "",
+      inStock: inStock!, featured: false, trending: false, rating, reviews,
+    };
+    addToCart(normalized);
   };
 
   return (
@@ -44,62 +76,36 @@ const ProductDetail = () => {
         </Link>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
-          {/* Image */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            className="relative rounded-2xl overflow-hidden aspect-[4/3]"
-          >
-            <img src={game.image} alt={game.title} className="w-full h-full object-cover" />
-            {discount > 0 && (
-              <span className="absolute top-4 left-4 bg-neon-green/90 text-background text-sm font-bold px-3 py-1.5 rounded-lg">
-                -{discount}%
-              </span>
-            )}
+          <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} className="relative rounded-2xl overflow-hidden aspect-[4/3]">
+            <img src={image} alt={title} className="w-full h-full object-cover" />
+            {discount > 0 && <span className="absolute top-4 left-4 bg-neon-green/90 text-background text-sm font-bold px-3 py-1.5 rounded-lg">-{discount}%</span>}
           </motion.div>
 
-          {/* Info */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.1 }}
-          >
+          <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.1 }}>
             <div className="flex items-center gap-2 mb-3">
-              <span className="bg-primary/10 text-primary text-xs font-semibold px-3 py-1 rounded-full border border-primary/20">
-                {game.platform}
-              </span>
-              <span className="bg-secondary/10 text-secondary text-xs font-semibold px-3 py-1 rounded-full border border-secondary/20">
-                {game.category}
-              </span>
+              <span className="bg-primary/10 text-primary text-xs font-semibold px-3 py-1 rounded-full border border-primary/20">{platform}</span>
+              {category && <span className="bg-secondary/10 text-secondary text-xs font-semibold px-3 py-1 rounded-full border border-secondary/20">{category}</span>}
             </div>
-
-            <h1 className="font-display text-3xl font-bold text-foreground mb-3">{game.title}</h1>
-
+            <h1 className="font-display text-3xl font-bold text-foreground mb-3">{title}</h1>
             <div className="flex items-center gap-2 mb-4">
               <div className="flex items-center gap-1">
                 {[...Array(5)].map((_, i) => (
-                  <Star key={i} className={`w-4 h-4 ${i < Math.floor(game.rating) ? "fill-neon-cyan text-neon-cyan" : "text-muted"}`} />
+                  <Star key={i} className={`w-4 h-4 ${i < Math.floor(rating) ? "fill-neon-cyan text-neon-cyan" : "text-muted"}`} />
                 ))}
               </div>
-              <span className="text-sm text-muted-foreground">{game.rating} ({game.reviews} avis)</span>
+              <span className="text-sm text-muted-foreground">{rating} ({reviews} avis)</span>
             </div>
-
             <div className="flex items-baseline gap-3 mb-6">
-              <span className="text-4xl font-display font-bold text-primary">{game.price}</span>
+              <span className="text-4xl font-display font-bold text-primary">{price}</span>
               <span className="text-lg text-muted-foreground">MAD</span>
-              {game.originalPrice && (
-                <span className="text-lg text-muted-foreground line-through">{game.originalPrice} MAD</span>
-              )}
+              {originalPrice && <span className="text-lg text-muted-foreground line-through">{originalPrice} MAD</span>}
             </div>
-
-            <p className="text-muted-foreground leading-relaxed mb-6">{game.description}</p>
-
-            {/* Meta */}
+            <p className="text-muted-foreground leading-relaxed mb-6">{description}</p>
             <div className="grid grid-cols-3 gap-3 mb-6">
               {[
-                { icon: Package, label: "Type", value: deliveryLabels[game.deliveryType] },
+                { icon: Package, label: "Type", value: deliveryLabels[deliveryType || "account"] },
                 { icon: Zap, label: "Livraison", value: "Instantanée" },
-                { icon: Shield, label: "Stock", value: game.inStock ? "En stock" : "Épuisé" },
+                { icon: Shield, label: "Stock", value: inStock ? "En stock" : "Épuisé" },
               ].map((m) => (
                 <div key={m.label} className="p-3 rounded-xl bg-card border border-border text-center">
                   <m.icon className="w-5 h-5 text-primary mx-auto mb-1" />
@@ -108,46 +114,28 @@ const ProductDetail = () => {
                 </div>
               ))}
             </div>
-
-            {/* Buy button */}
-            <button
-              onClick={() => !inCart && addToCart(game)}
-              disabled={!game.inStock}
+            <button onClick={handleAdd} disabled={!inStock}
               className={`w-full py-4 rounded-xl font-semibold text-lg flex items-center justify-center gap-2 transition-all duration-300 ${
-                inCart
-                  ? "bg-neon-green/20 text-neon-green border border-neon-green/30"
-                  : game.inStock
-                  ? "bg-primary text-primary-foreground hover:shadow-[0_0_30px_hsl(190,95%,50%,0.4)]"
+                inCart ? "bg-neon-green/20 text-neon-green border border-neon-green/30"
+                  : inStock ? "bg-primary text-primary-foreground hover:shadow-[0_0_30px_hsl(190,95%,50%,0.4)]"
                   : "bg-muted text-muted-foreground cursor-not-allowed"
-              }`}
-            >
-              {inCart ? (
-                <>
-                  <Check className="w-5 h-5" /> Ajouté au panier
-                </>
-              ) : (
-                <>
-                  <ShoppingCart className="w-5 h-5" /> Ajouter au panier · {game.price} MAD
-                </>
-              )}
+              }`}>
+              {inCart ? <><Check className="w-5 h-5" /> Ajouté au panier</> : <><ShoppingCart className="w-5 h-5" /> Ajouter au panier · {price} MAD</>}
             </button>
-
-            {/* Instructions */}
-            <div className="mt-6 p-4 rounded-xl bg-card border border-border">
-              <h3 className="font-semibold text-sm text-foreground mb-2">📋 Instructions</h3>
-              <p className="text-sm text-muted-foreground">{game.instructions}</p>
-            </div>
+            {instructions && (
+              <div className="mt-6 p-4 rounded-xl bg-card border border-border">
+                <h3 className="font-semibold text-sm text-foreground mb-2">📋 Instructions</h3>
+                <p className="text-sm text-muted-foreground">{instructions}</p>
+              </div>
+            )}
           </motion.div>
         </div>
 
-        {/* Related */}
         {related.length > 0 && (
           <section className="mb-12">
             <h2 className="font-display text-2xl font-bold text-foreground mb-6">Produits similaires</h2>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {related.map((g, i) => (
-                <GameCard key={g.id} game={g} index={i} />
-              ))}
+              {related.map((g, i) => <GameCard key={g.id} game={g} index={i} />)}
             </div>
           </section>
         )}
