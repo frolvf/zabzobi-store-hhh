@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { ShoppingCart, Search, Menu, X, Gamepad2 } from "lucide-react";
+import { ShoppingCart, Search, Menu, X, Gamepad2, User, Shield, LogOut } from "lucide-react";
 import { useCart } from "@/contexts/CartContext";
+import { useAuth } from "@/contexts/AuthContext";
 import { motion, AnimatePresence } from "framer-motion";
 
 const Navbar = () => {
   const { totalItems } = useCart();
+  const { user, isAdmin, signOut } = useAuth();
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const navLinks = [
@@ -13,7 +15,6 @@ const Navbar = () => {
     { to: "/catalog", label: "Catalogue" },
     { to: "/catalog?category=Accounts", label: "Comptes" },
     { to: "/catalog?category=Gift Cards", label: "Cartes Cadeaux" },
-    { to: "/catalog?category=IPTV", label: "IPTV" },
   ];
 
   return (
@@ -38,7 +39,7 @@ const Navbar = () => {
           ))}
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2">
           <Link to="/catalog" className="p-2 rounded-lg hover:bg-surface transition-colors">
             <Search className="w-5 h-5 text-muted-foreground" />
           </Link>
@@ -50,6 +51,25 @@ const Navbar = () => {
               </span>
             )}
           </Link>
+
+          {user ? (
+            <div className="hidden md:flex items-center gap-1">
+              {isAdmin && (
+                <Link to="/admin" className="p-2 rounded-lg hover:bg-surface transition-colors" title="Admin">
+                  <Shield className="w-5 h-5 text-secondary" />
+                </Link>
+              )}
+              <button onClick={() => signOut()} className="p-2 rounded-lg hover:bg-surface transition-colors" title="Déconnexion">
+                <LogOut className="w-5 h-5 text-muted-foreground" />
+              </button>
+            </div>
+          ) : (
+            <Link to="/auth" className="hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-primary/10 text-primary text-sm font-medium hover:bg-primary/20 transition-colors">
+              <User className="w-4 h-4" />
+              Connexion
+            </Link>
+          )}
+
           <button
             className="md:hidden p-2 rounded-lg hover:bg-surface transition-colors"
             onClick={() => setMobileOpen(!mobileOpen)}
@@ -78,6 +98,22 @@ const Navbar = () => {
                   {link.label}
                 </Link>
               ))}
+              {user ? (
+                <>
+                  {isAdmin && (
+                    <Link to="/admin" className="text-sm font-medium text-secondary py-2" onClick={() => setMobileOpen(false)}>
+                      Admin Dashboard
+                    </Link>
+                  )}
+                  <button onClick={() => { signOut(); setMobileOpen(false); }} className="text-sm font-medium text-destructive py-2 text-left">
+                    Déconnexion
+                  </button>
+                </>
+              ) : (
+                <Link to="/auth" className="text-sm font-medium text-primary py-2" onClick={() => setMobileOpen(false)}>
+                  Connexion / Inscription
+                </Link>
+              )}
             </div>
           </motion.div>
         )}
