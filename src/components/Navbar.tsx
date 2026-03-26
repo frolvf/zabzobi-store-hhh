@@ -23,7 +23,7 @@ const Navbar = () => {
         <Link to="/" className="flex items-center gap-2">
           <Gamepad2 className="w-8 h-8 text-primary" />
           <span className="font-display text-xl font-bold text-primary text-glow-cyan">
-            GAME<span className="text-secondary">ZONE</span>
+            ZUOSS<span className="text-secondary"> SHOP</span>
           </span>
         </Link>
 
