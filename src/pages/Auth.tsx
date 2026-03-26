@@ -97,7 +97,13 @@ const Auth = () => {
                   {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                 </button>
               </div>
-            </div>
+              {isLogin && (
+                <div className="text-right">
+                  <Link to="/forgot-password" className="text-xs text-muted-foreground hover:text-primary transition-colors">
+                    Mot de passe oublié ?
+                  </Link>
+                </div>
+              )}
 
             {error && <p className="text-sm text-destructive bg-destructive/10 p-3 rounded-lg">{error}</p>}
             {success && <p className="text-sm text-neon-green bg-neon-green/10 p-3 rounded-lg">{success}</p>}
