@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Trash2, ShoppingBag, ArrowLeft } from "lucide-react";
 import { motion } from "framer-motion";
 import { useCart } from "@/contexts/CartContext";
@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 
 const Cart = () => {
   const { items, removeFromCart, clearCart, totalPrice } = useCart();
+  const navigate = useNavigate();
 
   return (
     <div className="min-h-screen bg-background">
@@ -79,7 +80,10 @@ const Cart = () => {
                   </div>
                 </div>
 
-                <button className="w-full py-3.5 rounded-xl bg-primary text-primary-foreground font-semibold hover:shadow-[0_0_30px_hsl(190,95%,50%,0.4)] transition-all mb-3">
+                <button
+                  onClick={() => navigate("/checkout")}
+                  className="w-full py-3.5 rounded-xl bg-primary text-primary-foreground font-semibold hover:shadow-[0_0_30px_hsl(190,95%,50%,0.4)] transition-all mb-3"
+                >
                   Commander
                 </button>
 
