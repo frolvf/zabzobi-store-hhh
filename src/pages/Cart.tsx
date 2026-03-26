@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 
 const Cart = () => {
   const { items, removeFromCart, clearCart, totalPrice } = useCart();
+  const navigate = useNavigate();
 
   return (
     <div className="min-h-screen bg-background">
