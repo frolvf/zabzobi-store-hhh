@@ -44,14 +44,14 @@ const Auth = () => {
             <Link to="/" className="inline-flex items-center gap-2 mb-4">
               <Gamepad2 className="w-10 h-10 text-primary" />
               <span className="font-display text-2xl font-bold text-primary text-glow-cyan">
-                GAME<span className="text-secondary">ZONE</span>
+                ZUOSS<span className="text-secondary"> SHOP</span>
               </span>
             </Link>
             <h1 className="font-display text-2xl font-bold text-foreground">
               {isLogin ? "Connexion" : "Créer un compte"}
             </h1>
             <p className="text-sm text-muted-foreground mt-1">
-              {isLogin ? "Accédez à votre compte" : "Rejoignez GameZone"}
+              {isLogin ? "Accédez à votre compte" : "Rejoignez Zuoss Shop"}
             </p>
           </div>
 
@@ -97,8 +97,14 @@ const Auth = () => {
                   {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                 </button>
               </div>
+              {isLogin && (
+                <div className="text-right mt-1">
+                  <Link to="/forgot-password" className="text-xs text-muted-foreground hover:text-primary transition-colors">
+                    Mot de passe oublié ?
+                  </Link>
+                </div>
+              )}
             </div>
-
             {error && <p className="text-sm text-destructive bg-destructive/10 p-3 rounded-lg">{error}</p>}
             {success && <p className="text-sm text-neon-green bg-neon-green/10 p-3 rounded-lg">{success}</p>}
 
