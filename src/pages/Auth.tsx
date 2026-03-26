@@ -98,13 +98,13 @@ const Auth = () => {
                 </button>
               </div>
               {isLogin && (
-                <div className="text-right">
+                <div className="text-right mt-1">
                   <Link to="/forgot-password" className="text-xs text-muted-foreground hover:text-primary transition-colors">
                     Mot de passe oublié ?
                   </Link>
                 </div>
               )}
-
+            </div>
             {error && <p className="text-sm text-destructive bg-destructive/10 p-3 rounded-lg">{error}</p>}
             {success && <p className="text-sm text-neon-green bg-neon-green/10 p-3 rounded-lg">{success}</p>}
 
