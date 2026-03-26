@@ -9,7 +9,7 @@ const Footer = () => (
           <div className="flex items-center gap-2 mb-4">
             <Gamepad2 className="w-6 h-6 text-primary" />
             <span className="font-display text-lg font-bold text-primary">
-              GAME<span className="text-secondary">ZONE</span>
+              ZUOSS<span className="text-secondary"> SHOP</span>
             </span>
           </div>
           <p className="text-sm text-muted-foreground leading-relaxed">
