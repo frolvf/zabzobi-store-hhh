@@ -80,7 +80,10 @@ const Cart = () => {
                   </div>
                 </div>
 
-                <button className="w-full py-3.5 rounded-xl bg-primary text-primary-foreground font-semibold hover:shadow-[0_0_30px_hsl(190,95%,50%,0.4)] transition-all mb-3">
+                <button
+                  onClick={() => navigate("/checkout")}
+                  className="w-full py-3.5 rounded-xl bg-primary text-primary-foreground font-semibold hover:shadow-[0_0_30px_hsl(190,95%,50%,0.4)] transition-all mb-3"
+                >
                   Commander
                 </button>
 
