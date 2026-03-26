@@ -15,6 +15,7 @@ const Footer = () => (
           <p className="text-sm text-muted-foreground leading-relaxed">
             Votre boutique de jeux numériques au Maroc. Comptes, clés et cartes cadeaux pour toutes les plateformes.
           </p>
+
         </div>
 
         <div>
