@@ -28,7 +28,7 @@ const AdminLayout = ({ children }: { children: React.ReactNode }) => {
         <div className="flex items-center justify-between h-16 px-4 border-b border-border">
           <Link to="/admin" className="flex items-center gap-2">
             <Gamepad2 className="w-7 h-7 text-primary" />
-            <span className="font-display text-sm font-bold text-primary">ADMIN</span>
+            <span className="font-display text-sm font-bold text-primary">ZUOSS ADMIN</span>
           </Link>
           <button onClick={() => setSidebarOpen(false)} className="lg:hidden text-muted-foreground">
             <X className="w-5 h-5" />

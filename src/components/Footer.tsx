@@ -9,12 +9,13 @@ const Footer = () => (
           <div className="flex items-center gap-2 mb-4">
             <Gamepad2 className="w-6 h-6 text-primary" />
             <span className="font-display text-lg font-bold text-primary">
-              GAME<span className="text-secondary">ZONE</span>
+              ZUOSS<span className="text-secondary"> SHOP</span>
             </span>
           </div>
           <p className="text-sm text-muted-foreground leading-relaxed">
             Votre boutique de jeux numériques au Maroc. Comptes, clés et cartes cadeaux pour toutes les plateformes.
           </p>
+
         </div>
 
         <div>
@@ -57,7 +58,7 @@ const Footer = () => (
       </div>
 
       <div className="border-t border-border mt-8 pt-8 text-center text-sm text-muted-foreground">
-        © 2026 GameZone. Tous droits réservés.
+        © 2026 Zuoss Shop. Tous droits réservés.
       </div>
     </div>
   </footer>
