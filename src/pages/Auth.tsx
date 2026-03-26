@@ -44,14 +44,14 @@ const Auth = () => {
             <Link to="/" className="inline-flex items-center gap-2 mb-4">
               <Gamepad2 className="w-10 h-10 text-primary" />
               <span className="font-display text-2xl font-bold text-primary text-glow-cyan">
-                GAME<span className="text-secondary">ZONE</span>
+                ZUOSS<span className="text-secondary"> SHOP</span>
               </span>
             </Link>
             <h1 className="font-display text-2xl font-bold text-foreground">
               {isLogin ? "Connexion" : "Créer un compte"}
             </h1>
             <p className="text-sm text-muted-foreground mt-1">
-              {isLogin ? "Accédez à votre compte" : "Rejoignez GameZone"}
+              {isLogin ? "Accédez à votre compte" : "Rejoignez Zuoss Shop"}
             </p>
           </div>
 
