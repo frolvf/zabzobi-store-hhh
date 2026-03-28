@@ -103,6 +103,9 @@ const Navbar = () => {
               ))}
               {user ? (
                 <>
+                  <Link to="/orders" className="text-sm font-medium text-muted-foreground hover:text-primary py-2" onClick={() => setMobileOpen(false)}>
+                    Mes Commandes
+                  </Link>
                   {isAdmin && (
                     <Link to="/admin" className="text-sm font-medium text-secondary py-2" onClick={() => setMobileOpen(false)}>
                       Admin Dashboard
