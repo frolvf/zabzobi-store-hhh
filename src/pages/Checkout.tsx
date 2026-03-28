@@ -8,6 +8,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import PromoCodeInput from "@/components/PromoCodeInput";
 
 const paymentMethods = [
   {
