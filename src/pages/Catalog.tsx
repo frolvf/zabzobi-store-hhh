@@ -51,12 +51,12 @@ const Catalog = () => {
         result = [...result].sort((a, b) => Number(b.price) - Number(a.price));
         break;
       case "rating":
-        result = [...result].sort((a, b) => Number((b as any).rating || 0) - Number((a as any).rating || 0));
+        result = [...result].sort((a, b) => Number((b as any).rating ?? 0) - Number((a as any).rating ?? 0));
         break;
       case "newest":
         result = [...result].sort((a, b) => {
-          const da = "created_at" in a ? new Date(a.created_at).getTime() : 0;
-          const db = "created_at" in b ? new Date(b.created_at).getTime() : 0;
+          const da = "created_at" in a ? new Date(String((a as any).created_at)).getTime() : 0;
+          const db = "created_at" in b ? new Date(String((b as any).created_at)).getTime() : 0;
           return db - da;
         });
         break;
