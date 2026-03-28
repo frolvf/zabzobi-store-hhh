@@ -44,6 +44,9 @@ const Checkout = () => {
   const [notes, setNotes] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [orderSuccess, setOrderSuccess] = useState(false);
+  const [promoCode, setPromoCode] = useState<string | null>(null);
+  const [discount, setDiscount] = useState(0);
+  const finalPrice = Math.max(0, totalPrice - discount);
 
   if (!user) {
     navigate("/auth");
