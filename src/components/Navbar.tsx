@@ -54,6 +54,9 @@ const Navbar = () => {
 
           {user ? (
             <div className="hidden md:flex items-center gap-1">
+              <Link to="/orders" className="p-2 rounded-lg hover:bg-surface transition-colors" title="Mes commandes">
+                <Package className="w-5 h-5 text-muted-foreground" />
+              </Link>
               {isAdmin && (
                 <Link to="/admin" className="p-2 rounded-lg hover:bg-surface transition-colors" title="Admin">
                   <Shield className="w-5 h-5 text-secondary" />
