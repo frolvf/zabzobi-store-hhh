@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { ShoppingCart, Search, Menu, X, Gamepad2, User, Shield, LogOut } from "lucide-react";
+import { ShoppingCart, Search, Menu, X, Gamepad2, User, Shield, LogOut, Package } from "lucide-react";
 import { useCart } from "@/contexts/CartContext";
 import { useAuth } from "@/contexts/AuthContext";
 import { motion, AnimatePresence } from "framer-motion";
@@ -54,6 +54,9 @@ const Navbar = () => {
 
           {user ? (
             <div className="hidden md:flex items-center gap-1">
+              <Link to="/orders" className="p-2 rounded-lg hover:bg-surface transition-colors" title="Mes commandes">
+                <Package className="w-5 h-5 text-muted-foreground" />
+              </Link>
               {isAdmin && (
                 <Link to="/admin" className="p-2 rounded-lg hover:bg-surface transition-colors" title="Admin">
                   <Shield className="w-5 h-5 text-secondary" />
@@ -100,6 +103,9 @@ const Navbar = () => {
               ))}
               {user ? (
                 <>
+                  <Link to="/orders" className="text-sm font-medium text-muted-foreground hover:text-primary py-2" onClick={() => setMobileOpen(false)}>
+                    Mes Commandes
+                  </Link>
                   {isAdmin && (
                     <Link to="/admin" className="text-sm font-medium text-secondary py-2" onClick={() => setMobileOpen(false)}>
                       Admin Dashboard
