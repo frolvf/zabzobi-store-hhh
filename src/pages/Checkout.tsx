@@ -95,12 +95,14 @@ const Checkout = () => {
         .from("orders")
         .insert({
           user_id: user.id,
-          total_amount: totalPrice,
+          total_amount: finalPrice,
           payment_method: selectedMethod,
           payment_proof_url: filePath,
           notes: notes || null,
           status: "pending",
-        })
+          promo_code: promoCode,
+          discount_amount: discount,
+        } as any)
         .select()
         .single();
 
