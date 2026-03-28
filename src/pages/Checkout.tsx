@@ -256,18 +256,33 @@ const Checkout = () => {
                   </div>
                 ))}
               </div>
+              <div className="mb-4">
+                <PromoCodeInput
+                  subtotal={totalPrice}
+                  onApply={(code, disc) => { setPromoCode(code); setDiscount(disc); }}
+                  onRemove={() => { setPromoCode(null); setDiscount(0); }}
+                  appliedCode={promoCode}
+                  discount={discount}
+                />
+              </div>
               <div className="border-t border-border pt-3 mb-6">
                 <div className="flex justify-between text-sm mb-1">
                   <span className="text-muted-foreground">Sous-total</span>
                   <span className="text-foreground">{totalPrice} MAD</span>
                 </div>
+                {discount > 0 && (
+                  <div className="flex justify-between text-sm mb-1">
+                    <span className="text-muted-foreground">Réduction</span>
+                    <span className="text-green-400 font-semibold">-{discount} MAD</span>
+                  </div>
+                )}
                 <div className="flex justify-between text-sm mb-3">
                   <span className="text-muted-foreground">Frais</span>
-                  <span className="text-neon-green font-semibold">Gratuit</span>
+                  <span className="text-green-400 font-semibold">Gratuit</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="font-semibold text-foreground">Total</span>
-                  <span className="text-xl font-bold text-primary">{totalPrice} MAD</span>
+                  <span className="text-xl font-bold text-primary">{finalPrice} MAD</span>
                 </div>
               </div>
 
