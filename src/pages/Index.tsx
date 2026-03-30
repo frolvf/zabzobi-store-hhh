@@ -5,6 +5,7 @@ import { useFeaturedGames, useTrendingGames } from "@/hooks/useGames";
 import { useLanguage } from "@/contexts/LanguageContext";
 import GameCard from "@/components/GameCard";
 import HeroSlider from "@/components/HeroSlider";
+import NovaAIBanner from "@/components/NovaAIBanner";
 import CategoryGrid from "@/components/CategoryGrid";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -46,6 +47,8 @@ const Index = () => {
         </section>
 
         <section className="container mx-auto px-4 mb-12"><CategoryGrid /></section>
+
+        <NovaAIBanner />
 
         <section className="container mx-auto px-4 mb-12">
           <div className="flex items-center justify-between mb-6">
