@@ -69,7 +69,7 @@ const Footer = () => {
           <p>© 2026 Zuoss Shop. {t("footer.rights")}</p>
           <p className="mt-2">
             Developed by{" "}
-            <a href="https://novaai-agency.vercel.app/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
+            <a href="http://novaai-agency.com/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
               NovaAI Agency
             </a>
           </p>

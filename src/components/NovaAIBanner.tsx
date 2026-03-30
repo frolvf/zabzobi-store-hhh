@@ -3,7 +3,7 @@ import { ExternalLink, Sparkles } from "lucide-react";
 const NovaAIBanner = () => {
   return (
     <a
-      href="https://novaai-agency.vercel.app/"
+      href="http://novaai-agency.com/"
       target="_blank"
       rel="noopener noreferrer"
       className="block w-full bg-gradient-to-r from-primary/10 via-secondary/10 to-primary/10 border-y border-border hover:from-primary/20 hover:via-secondary/20 hover:to-primary/20 transition-all duration-300 group"
