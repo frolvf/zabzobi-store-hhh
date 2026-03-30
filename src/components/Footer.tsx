@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Gamepad2, Mail, Phone, MapPin } from "lucide-react";
+import { Gamepad2, Mail, Phone, MapPin, Instagram } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const Footer = () => {
@@ -54,6 +54,10 @@ const Footer = () => {
                 <MapPin className="w-4 h-4 text-primary" />
                 Casablanca, Maroc
               </div>
+              <a href="https://instagram.com/zuoss.shop" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors">
+                <Instagram className="w-4 h-4 text-primary" />
+                @zuoss.shop
+              </a>
             </div>
           </div>
         </div>
