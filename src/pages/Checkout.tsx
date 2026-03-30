@@ -16,21 +16,21 @@ const paymentMethods = [
     label: "WafaCash",
     icon: Wallet,
     description: "Envoyez le montant via WafaCash et uploadez la preuve",
-    instructions: "Envoyez le montant total au numéro: 06 00 00 00 00. Prenez une photo du reçu et uploadez-la ci-dessous.",
+    instructions: "Envoyez le montant total au numéro: 0660967684. Prenez une photo du reçu et uploadez-la ci-dessous.",
   },
   {
     id: "cashplus",
     label: "CashPlus",
     icon: CreditCard,
     description: "Payez via CashPlus et uploadez le reçu",
-    instructions: "Effectuez un dépôt CashPlus au numéro: 06 00 00 00 00. Prenez une photo du reçu et uploadez-la ci-dessous.",
+    instructions: "Effectuez un dépôt CashPlus au numéro: 0660967684. Prenez une photo du reçu et uploadez-la ci-dessous.",
   },
   {
     id: "bank_transfer",
     label: "Virement Bancaire",
     icon: Building2,
     description: "Virement vers notre compte bancaire",
-    instructions: "RIB: 000 000 0000000000 000000 00\nBanque: CIH Bank\nTitulaire: Zuoss Shop SARL\nUploadez la capture du virement ci-dessous.",
+    instructions: "RIB: 230 815 5668613211033300 63\nBanque: CIH Bank\nTitulaire: Zuoss Shop SARL\nUploadez la capture du virement ci-dessous.",
   },
 ];
 
