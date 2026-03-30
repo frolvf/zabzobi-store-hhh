@@ -6,6 +6,7 @@ import { useGames } from "@/hooks/useGames";
 import { useLanguage } from "@/contexts/LanguageContext";
 import GameCard from "@/components/GameCard";
 import Navbar from "@/components/Navbar";
+import NovaAIBanner from "@/components/NovaAIBanner";
 import Footer from "@/components/Footer";
 
 type SortOption = "default" | "price_low" | "price_high" | "rating" | "newest";
