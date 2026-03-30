@@ -177,7 +177,6 @@ const Catalog = () => {
           </div>
         )}
       </main>
-      <NovaAIBanner />
       <Footer />
     </div>
   );
