@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Gamepad2, Mail, Phone, MapPin } from "lucide-react";
+import { Gamepad2, Mail, Phone, MapPin, Instagram } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const Footer = () => {
