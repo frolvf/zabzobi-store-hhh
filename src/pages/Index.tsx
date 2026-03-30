@@ -5,6 +5,7 @@ import { useFeaturedGames, useTrendingGames } from "@/hooks/useGames";
 import { useLanguage } from "@/contexts/LanguageContext";
 import GameCard from "@/components/GameCard";
 import HeroSlider from "@/components/HeroSlider";
+import NovaAIBanner from "@/components/NovaAIBanner";
 import CategoryGrid from "@/components/CategoryGrid";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
