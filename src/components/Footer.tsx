@@ -1,12 +1,15 @@
 import { Link } from "react-router-dom";
 import { Gamepad2, Mail, Phone, MapPin, Instagram } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import NovaAIBanner from "@/components/NovaAIBanner";
 
 const Footer = () => {
   const { t } = useLanguage();
 
   return (
-    <footer className="border-t border-border bg-card mt-20">
+    <>
+      <NovaAIBanner />
+      <footer className="border-t border-border bg-card">
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
@@ -73,6 +76,7 @@ const Footer = () => {
         </div>
       </div>
     </footer>
+    </>
   );
 };
 
