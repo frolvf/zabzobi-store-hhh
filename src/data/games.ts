@@ -170,7 +170,7 @@ export const games: Game[] = [
     category: "Gift Cards",
     price: 499,
     currency: "MAD",
-    image: "https://images.unsplash.com/photo-1614680376573-df3480f0c6ff?w=600&h=400&fit=crop",
+    image: "https://ixmtfjohzmlpagvqfafm.supabase.co/storage/v1/object/public/game-images/steam-wallet.jpg",
     description: "Carte cadeau Steam 50 USD. Ajoutez des fonds à votre portefeuille Steam.",
     deliveryType: "instant",
     instructions: "Connectez-vous à Steam et utilisez le code dans la section portefeuille.",
