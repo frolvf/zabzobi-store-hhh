@@ -153,7 +153,7 @@ export const games: Game[] = [
     price: 349,
     originalPrice: 549,
     currency: "MAD",
-    image: "https://images.unsplash.com/photo-1552820728-8b83bb6b2b28?w=600&h=400&fit=crop",
+    image: "https://ixmtfjohzmlpagvqfafm.supabase.co/storage/v1/object/public/game-images/cod-mw3.jpg",
     description: "Call of Duty Modern Warfare III. Compte PS4 avec le jeu complet.",
     deliveryType: "account",
     instructions: "Connectez-vous avec les identifiants PS4 fournis après achat.",
