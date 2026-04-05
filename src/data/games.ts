@@ -117,7 +117,7 @@ export const games: Game[] = [
     category: "Gift Cards",
     price: 349,
     currency: "MAD",
-    image: "https://images.unsplash.com/photo-1589241062272-c0a000072dfa?w=600&h=400&fit=crop",
+    image: "https://ixmtfjohzmlpagvqfafm.supabase.co/storage/v1/object/public/game-images/fortnite-vbucks.jpg",
     description: "5000 V-Bucks pour Fortnite. Utilisez-les pour acheter des skins et plus.",
     deliveryType: "instant",
     instructions: "Connectez-vous à Epic Games et utilisez le code dans la section paiement.",
