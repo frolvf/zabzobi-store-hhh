@@ -188,7 +188,7 @@ export const games: Game[] = [
     price: 329,
     originalPrice: 499,
     currency: "MAD",
-    image: "https://images.unsplash.com/photo-1486572788966-cfd3df1f5b42?w=600&h=400&fit=crop",
+    image: "https://ixmtfjohzmlpagvqfafm.supabase.co/storage/v1/object/public/game-images/god-of-war.jpg",
     description: "God of War Ragnarök édition complète. Compte PS5 avec tous les DLC.",
     deliveryType: "account",
     instructions: "Connectez-vous au PSN avec les identifiants fournis.",
