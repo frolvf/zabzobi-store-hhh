@@ -100,7 +100,7 @@ export const games: Game[] = [
     category: "Subscriptions",
     price: 249,
     currency: "MAD",
-    image: "https://images.unsplash.com/photo-1621259182978-fbf93132d53d?w=600&h=400&fit=crop",
+    image: "https://ixmtfjohzmlpagvqfafm.supabase.co/storage/v1/object/public/game-images/xbox-gamepass.jpg",
     description: "Xbox Game Pass Ultimate 3 mois. Accès à des centaines de jeux.",
     deliveryType: "instant",
     instructions: "Activez le code sur xbox.com/redeem ou dans l'application Xbox.",
