@@ -83,7 +83,7 @@ export const games: Game[] = [
     category: "Subscriptions",
     price: 399,
     currency: "MAD",
-    image: "https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?w=600&h=400&fit=crop",
+    image: "https://ixmtfjohzmlpagvqfafm.supabase.co/storage/v1/object/public/game-images/ps-plus.jpg",
     description: "Abonnement PlayStation Plus Essential 12 mois. Région Maroc/Europe.",
     deliveryType: "instant",
     instructions: "Entrez le code dans le PlayStation Store > Utiliser un code.",
