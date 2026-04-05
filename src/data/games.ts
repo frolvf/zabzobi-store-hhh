@@ -222,7 +222,7 @@ export const games: Game[] = [
     category: "IPTV",
     price: 299,
     currency: "MAD",
-    image: "https://images.unsplash.com/photo-1593784991095-a205069470b6?w=600&h=400&fit=crop",
+    image: "https://ixmtfjohzmlpagvqfafm.supabase.co/storage/v1/object/public/game-images/iptv-premium.jpg",
     description: "IPTV Premium avec +10000 chaînes et VOD. Compatible tous appareils.",
     deliveryType: "instant",
     instructions: "Installez l'application recommandée et entrez les identifiants fournis.",
