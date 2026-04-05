@@ -48,7 +48,7 @@ export const games: Game[] = [
     price: 299,
     originalPrice: 499,
     currency: "MAD",
-    image: "https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?w=600&h=400&fit=crop",
+    image: "https://ixmtfjohzmlpagvqfafm.supabase.co/storage/v1/object/public/game-images/fifa-24.jpg",
     description: "FIFA 24 Edition Ultimate avec bonus FUT et accès anticipé. Compte PS5 complet.",
     deliveryType: "account",
     instructions: "Connectez-vous au PlayStation Network avec les identifiants fournis.",
