@@ -205,7 +205,7 @@ export const games: Game[] = [
     category: "Accounts",
     price: 129,
     currency: "MAD",
-    image: "https://images.unsplash.com/photo-1587573089734-09cb69c0f2b4?w=600&h=400&fit=crop",
+    image: "https://ixmtfjohzmlpagvqfafm.supabase.co/storage/v1/object/public/game-images/minecraft.jpg",
     description: "Minecraft Java Edition. Compte complet avec accès à tous les serveurs.",
     deliveryType: "account",
     instructions: "Connectez-vous sur minecraft.net avec les identifiants fournis.",
