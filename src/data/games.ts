@@ -66,7 +66,7 @@ export const games: Game[] = [
     price: 149,
     originalPrice: 249,
     currency: "MAD",
-    image: "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600&h=400&fit=crop",
+    image: "https://ixmtfjohzmlpagvqfafm.supabase.co/storage/v1/object/public/game-images/rdr2.jpg",
     description: "Clé Steam pour Red Dead Redemption 2. Activation mondiale.",
     deliveryType: "key",
     instructions: "Activez la clé dans votre client Steam > Jeux > Activer un produit.",
