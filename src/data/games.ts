@@ -30,7 +30,7 @@ export const games: Game[] = [
     price: 199,
     originalPrice: 349,
     currency: "MAD",
-    image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600&h=400&fit=crop",
+    image: "https://ixmtfjohzmlpagvqfafm.supabase.co/storage/v1/object/public/game-images/gta-v.jpg",
     description: "Grand Theft Auto V Premium Edition avec accès complet au mode en ligne. Inclut le Criminal Enterprise Starter Pack.",
     deliveryType: "account",
     instructions: "Connectez-vous avec les identifiants fournis. Changez le mot de passe après la première connexion.",
