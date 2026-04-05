@@ -135,7 +135,7 @@ export const games: Game[] = [
     price: 279,
     originalPrice: 449,
     currency: "MAD",
-    image: "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=600&h=400&fit=crop",
+    image: "https://ixmtfjohzmlpagvqfafm.supabase.co/storage/v1/object/public/game-images/elden-ring.jpg",
     description: "Elden Ring - Jeu de l'année. Clé Steam activation mondiale.",
     deliveryType: "key",
     instructions: "Activez la clé dans Steam > Jeux > Activer un produit sur Steam.",
